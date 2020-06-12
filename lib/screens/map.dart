@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tattomaster/components/customTextInput.dart';
+import 'package:tattomaster/models/Location.dart';
+import 'package:tattomaster/models/User.dart';
+import 'package:tattomaster/screens/profile.dart';
 
 class MapScreen extends StatefulWidget {
   @override
@@ -101,57 +104,86 @@ class _MapScreenState extends State<MapScreen> {
                       Icon(Icons.tune)
                     ]
                   ),
-                  Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              'https://api.adorable.io/avatars/285/abott@adorable.png',
-                              width: 100,
-                              height: 100,
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text("Diego Soria Rios"),
-                              Row(
-                                children: <Widget>[
-                                  Icon(Icons.location_on),
-                                  Text("Location"),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Container(
-                                    color: Colors.grey[200],
-                                    child: Row(
-                                      children: <Widget>[
-                                        Icon(Icons.star, color: Colors.grey[400]),
-                                        Text("5.00", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[400]))
-                                      ],
-                                    ),
-                                  ),
-                                  //Spacer(),
-                                  Text("Reviews 100")
-                                ],
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  // TODO: LIST
+                  flatList(),
                 ],
               )
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget flatList() {
+    var data = [
+      User(userId: '1', name: 'Diego', avatar: 'https://api.adorable.io/avatars/285/diego.png', location: Location(-28.262350, -52.408989), reviews: 10, totalReviews: 5, tattoos: []),
+      User(userId: '1', name: 'Soria', avatar: 'https://api.adorable.io/avatars/285/soria.png', location: Location(-28.262350, -52.408989), reviews: 10, totalReviews: 5, tattoos: []),
+      User(userId: '1', name: 'Rios', avatar: 'https://api.adorable.io/avatars/285/rios.png', location: Location(-28.262350, -52.408989), reviews: 10, totalReviews: 5, tattoos: []),
+    ];
+
+    return Container(
+      height: MediaQuery.of(context).size.height * .4,
+      child: ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, int index) {
+          return GestureDetector(
+            onTap: () => Navigator.push(
+                context, 
+                MaterialPageRoute(
+                  builder: (BuildContext context) => ProfileScreen(data: data[index])
+                )
+              ),
+            child: listItem(data[index]),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget listItem(item) {
+    return Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.network(
+                item.avatar,
+                width: 100,
+                height: 100,
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(item.name),
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.location_on),
+                    Text("${item.location.name}"),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      color: Colors.grey[200],
+                      child: Row(
+                        children: <Widget>[
+                          Icon(Icons.star, color: Colors.grey[400]),
+                          Text("${item.reviews}", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[400]))
+                        ],
+                      ),
+                    ),
+                    //Spacer(),
+                    Text("Reviews ${item.totalReviews}")
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
+      ],
     );
   }
 }

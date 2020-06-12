@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
+  var data;
+
+  ProfileScreen({this.data});
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -32,7 +36,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: MediaQuery.of(context).size.height * .4,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage("https://avatars1.githubusercontent.com/u/24478606?v=4"),
+                      //image: NetworkImage("https://avatars1.githubusercontent.com/u/24478606?v=4"),
+                      image: NetworkImage(widget.data.avatar),
                       fit: BoxFit.cover
                     )
                   ),
@@ -79,26 +84,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text("Diego Soria Rios", style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text("5.0")
+                      Text("${widget.data.name}", style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text("${widget.data.reviews}")
                     ]
                   ),
                   Row(
                     children: <Widget>[
                       Icon(Icons.location_on),
-                      Text("Passo Fundo, Brasil")
+                      Text("${widget.data.location.name}")
                     ],
                   )
                   // TODO: LIST
                 ],
               )
             ),
-            FlatButton(
-              child: Text("BOOK"),
-              onPressed: () {},
-            )
           ],
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {}, 
+        label: Text("BOOK"),
+        backgroundColor: Colors.black,
       ),
     );
   }
