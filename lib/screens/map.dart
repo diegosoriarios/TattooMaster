@@ -67,14 +67,83 @@ class _MapScreenState extends State<MapScreen> {
               child: Column(
                 children: <Widget>[
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text("Masters", style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text("12"),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Text(
+                          "Masters", 
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 32,
+                          )
+                        ),
+                      ),
+                      Container(
+                        width: 25,
+                        height: 25,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Colors.black
+                        ),
+                        child: Center(
+                          child: Text(
+                            "12", 
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold
+                            )
+                          ),
+                        )
+                      ),
                       Spacer(),
                       Icon(Icons.tune)
                     ]
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.network(
+                              'https://api.adorable.io/avatars/285/abott@adorable.png',
+                              width: 100,
+                              height: 100,
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text("Diego Soria Rios"),
+                              Row(
+                                children: <Widget>[
+                                  Icon(Icons.location_on),
+                                  Text("Location"),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Container(
+                                    color: Colors.grey[200],
+                                    child: Row(
+                                      children: <Widget>[
+                                        Icon(Icons.star, color: Colors.grey[400]),
+                                        Text("5.00", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[400]))
+                                      ],
+                                    ),
+                                  ),
+                                  //Spacer(),
+                                  Text("Reviews 100")
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
                   ),
                   // TODO: LIST
                 ],
