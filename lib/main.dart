@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
+import 'package:tattomaster/screens/splashscreen.dart';
 import 'package:tattomaster/screens/welcome.dart';
+import 'package:tattomaster/stores/user_store.dart';
 
 void main() => runApp(MyApp());
 
+final userStore = UserStore();
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData( 
         primarySwatch: Colors.blue,
       ),
-      home: WelcomeScreen()
+      home: Splash()
     );
   }
 }

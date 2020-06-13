@@ -47,18 +47,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        IconButton(
-                          icon: Icon(Icons.arrow_back_ios),
+                        RawMaterialButton(
                           onPressed: () => Navigator.pop(context),
+                          elevation: 2.0,
+                          fillColor: Colors.white,
+                          child: Icon(Icons.arrow_back_ios),
+                          padding: EdgeInsets.all(15.0),
+                          shape: CircleBorder(),
                         ),
                         Spacer(),
                         IconButton(
-                          icon: Icon(Icons.more_horiz),
+                          icon: Icon(Icons.more_horiz, color: Colors.white),
                           //onPressed: () => Navigator.pop(context),
                           onPressed: () {},
                         ),
                         IconButton(
-                          icon: Icon(Icons.person),
+                          icon: Icon(Icons.person, color: Colors.white),
                           //onPressed: () => Navigator.pop(context),
                           onPressed: () {},
                         ),
@@ -84,8 +88,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text("${widget.data.name}", style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text("${widget.data.reviews}")
+                      Text(
+                        "${widget.data.name}", 
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32
+                        )
+                      ),
+                      Container(
+                        color: Colors.grey[200],
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.star, color: Colors.grey[400]),
+                            Text("${widget.data.reviews}", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[400]))
+                          ],
+                        ),
+                      ),
                     ]
                   ),
                   Row(

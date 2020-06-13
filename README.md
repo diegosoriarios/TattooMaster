@@ -25,13 +25,16 @@ samples, guidance on mobile development, and a full API reference.
 - [ ] TDD
 
 - [ ] Layouts - [UI](https://dribbble.com/shots/12007711-The-tattoo-artists-mobile-app-application-interaction)
-- [ ] Animations
-- [ ] Consumir APIS - dio
-- [ ] State - mobx
+- [x] Animations
+- [x] Consumir APIS - http
+- [x] State - mobx
 - [ ] Arquitetura - mvc, mvvm
 - [ ] Nativo
 - [ ] Perfomance
 - [ ] Otimização
 - [ ] Deployment - CI/CD
+- [ ] Firebase
+- [ ] Maps
+- [x] Splashscreen
 
 - [ ] Programação Reativa

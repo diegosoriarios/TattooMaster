@@ -20,12 +20,18 @@ dependencies:
   flutter:
     sdk: flutter
   http:
+  mobx: ^1.0.0
+  flutter_mobx: ^1.0.0
+  splashscreen: ^1.2.0
+  drawing_animation: ^0.1.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
+  build_runner:
+  mobx_codegen:
   flutter_test:
     sdk: flutter
 
@@ -45,6 +51,7 @@ flutter:
   assets:
     - assets/illustrations/10.png
     - assets/illustrations/07.png
+    - assets/animation/design.svg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

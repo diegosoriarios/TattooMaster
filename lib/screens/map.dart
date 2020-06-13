@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tattomaster/components/customTextInput.dart';
+import 'package:tattomaster/main.dart';
 import 'package:tattomaster/models/Location.dart';
 import 'package:tattomaster/models/User.dart';
 import 'package:tattomaster/screens/profile.dart';
@@ -45,9 +47,13 @@ class _MapScreenState extends State<MapScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        IconButton(
-                          icon: Icon(Icons.arrow_back_ios),
+                        RawMaterialButton(
                           onPressed: () => Navigator.pop(context),
+                          elevation: 2.0,
+                          fillColor: Colors.white,
+                          child: Icon(Icons.arrow_back_ios),
+                          padding: EdgeInsets.all(15.0),
+                          shape: CircleBorder(),
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width * .6,
@@ -115,11 +121,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Widget flatList() {
-    var data = [
-      User(userId: '1', name: 'Diego', avatar: 'https://api.adorable.io/avatars/285/diego.png', location: Location(-28.262350, -52.408989), reviews: 10, totalReviews: 5, tattoos: []),
-      User(userId: '1', name: 'Soria', avatar: 'https://api.adorable.io/avatars/285/soria.png', location: Location(-28.262350, -52.408989), reviews: 10, totalReviews: 5, tattoos: []),
-      User(userId: '1', name: 'Rios', avatar: 'https://api.adorable.io/avatars/285/rios.png', location: Location(-28.262350, -52.408989), reviews: 10, totalReviews: 5, tattoos: []),
-    ];
+    var data = userStore.users;
 
     return Container(
       height: MediaQuery.of(context).size.height * .4,
