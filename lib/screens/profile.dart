@@ -111,8 +111,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Icon(Icons.location_on),
                       Text("${widget.data.location.name}")
                     ],
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height * .4,
+                    child: flatList()
                   )
-                  // TODO: LIST
                 ],
               )
             ),
@@ -125,6 +128,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
         label: Text("BOOK"),
         backgroundColor: Colors.black,
       ),
+    );
+  }
+
+  Widget flatList() {
+    var data = widget.data.tattoos;
+
+    return Container(
+      height: MediaQuery.of(context).size.height * .4,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: data.length,
+        itemBuilder: (context, int index) {
+          return GestureDetector(
+            onTap: () => {},
+            child: listItem(data[index]),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget listItem(item) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Image.network(item.image, 
+        width: 200,
+        height: 200,
+      )
     );
   }
 }
