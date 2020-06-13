@@ -14,27 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-
-
-## TODO
-- [ ] solid
-- [ ] oop
-- [ ] Bloc
-- [ ] Testes unitarios
-- [ ] Teste de integração
-- [ ] TDD
-
-- [ ] Layouts - [UI](https://dribbble.com/shots/12007711-The-tattoo-artists-mobile-app-application-interaction)
-- [x] Animations
-- [x] Consumir APIS - http
-- [x] State - mobx
-- [ ] Arquitetura - mvc, mvvm
-- [ ] Nativo
-- [ ] Perfomance
-- [ ] Otimização
-- [ ] Deployment - CI/CD
-- [ ] Firebase
-- [x] Maps
-- [x] Splashscreen
-
-- [ ] Programação Reativa

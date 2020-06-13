@@ -105,7 +105,7 @@ class _MapScreenState extends State<MapScreen> {
                         ),
                         child: Center(
                           child: Text(
-                            "12", 
+                            "${userStore.users.length}", 
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold
@@ -150,49 +150,52 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Widget listItem(item) {
-    return Column(
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                item.avatar,
-                width: 100,
-                height: 100,
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(item.name),
-                Row(
-                  children: <Widget>[
-                    Icon(Icons.location_on),
-                    Text("${item.location.name}"),
-                  ],
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  item.avatar,
+                  width: 100,
+                  height: 100,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Container(
-                      color: Colors.grey[200],
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.star, color: Colors.grey[400]),
-                          Text("${item.reviews}", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[400]))
-                        ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(item.name),
+                  Row(
+                    children: <Widget>[
+                      Icon(Icons.location_on),
+                      Text("${item.location.name}"),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        color: Colors.grey[200],
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.star, color: Colors.grey[400]),
+                            Text("${item.reviews}", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[400]))
+                          ],
+                        ),
                       ),
-                    ),
-                    //Spacer(),
-                    Text("Reviews ${item.totalReviews}")
-                  ],
-                )
-              ],
-            )
-          ],
-        ),
-      ],
+                      //Spacer(),
+                      Text("Reviews ${item.totalReviews}")
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
