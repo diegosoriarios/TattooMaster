@@ -24,6 +24,7 @@ dependencies:
   flutter_mobx: ^1.0.0
   splashscreen: ^1.2.0
   drawing_animation: ^0.1.1
+  google_maps_flutter:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

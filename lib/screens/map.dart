@@ -5,6 +5,7 @@ import 'package:tattomaster/main.dart';
 import 'package:tattomaster/models/Location.dart';
 import 'package:tattomaster/models/User.dart';
 import 'package:tattomaster/screens/profile.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
   @override
@@ -12,7 +13,12 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  GoogleMapController mapController;
   TextEditingController _controller;
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
 
   void initState() {
     super.initState();
@@ -33,19 +39,20 @@ class _MapScreenState extends State<MapScreen> {
             Stack(
               children: <Widget>[
                 Container(
-                  width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * .4,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://staticmapmaker.com/img/cartodb_placeholder.png"),
-                      fit: BoxFit.cover
-                    )
+                  child: GoogleMap(
+                    onMapCreated: _onMapCreated,
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(-28.262350, -52.408989),
+                      zoom: 20.0,
+                    ),
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 50),
+                ),
+                Positioned(
+                    top: 50,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         RawMaterialButton(
                           onPressed: () => Navigator.pop(context),
@@ -55,6 +62,7 @@ class _MapScreenState extends State<MapScreen> {
                           padding: EdgeInsets.all(15.0),
                           shape: CircleBorder(),
                         ),
+                        SizedBox(width: 20),
                         Container(
                           width: MediaQuery.of(context).size.width * .6,
                           child: customTextInput(_controller, "Location", Icons.my_location, Icons.search)
@@ -62,7 +70,6 @@ class _MapScreenState extends State<MapScreen> {
                       ],
                     ),
                   ),
-                ),
               ],
             ),
             Container(

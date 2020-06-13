@@ -34,7 +34,7 @@ samples, guidance on mobile development, and a full API reference.
 - [ ] Otimização
 - [ ] Deployment - CI/CD
 - [ ] Firebase
-- [ ] Maps
+- [x] Maps
 - [x] Splashscreen
 
 - [ ] Programação Reativa
